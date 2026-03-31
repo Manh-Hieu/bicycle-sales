@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register - Nexcent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+    <div class="auth-header">
+        <div class="auth-header-content">
+            <a href="main.html" class="auth-logo">
+                <img src="icon/logo.svg" alt="Nexcent Logo">
+                <h2>Nexcent</h2>
+            </a>
+            <a href="main.html" class="auth-back-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="auth-container">
+        <!-- Tabs -->
+        <div class="auth-tabs">
+            <div class="auth-tab active" onclick="switchTab('login')">
+                Login
+            </div>
+            <div class="auth-tab" onclick="switchTab('register')">
+                Sign Up
+            </div>
+        </div>
+
+        <!-- Login Tab -->
+        <div id="login" class="auth-tab-content active">
+            <h3 style="text-align: center; margin-bottom: 30px; color: #333;">Welcome Back</h3>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="password-toggle">
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <button type="button" onclick="togglePassword('login-password')">👁️</button>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="login-remember">
+                        <label for="login-remember">Remember me</label>
+                    </div>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <div class="social-login">
+                <button class="social-btn" onclick="alert('Google login')">Google</button>
+                <button class="social-btn" onclick="alert('Facebook login')">Facebook</button>
+            </div>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="#" onclick="switchTab('register')">Sign up here</a>
+            </div>
+        </div>
+
+        <!-- Register Tab -->
+        <div id="register" class="auth-tab-content">
+            <h3 style="text-align: center; margin-bottom: 30px; color: #333;">Create Account</h3>
+            
+            <form onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <div class="password-toggle">
+                        <input type="password" id="register-password" placeholder="Create a strong password" required>
+                        <button type="button" onclick="togglePassword('register-password')">👁️</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password</label>
+                    <div class="password-toggle">
+                        <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                        <button type="button" onclick="togglePassword('register-confirm')">👁️</button>
+                    </div>
+                </div>
+
+                <div class="form-checkbox" style="margin-bottom: 20px;">
+                    <input type="checkbox" id="register-terms" required>
+                    <label for="register-terms">I agree to the <a href="#" style="color: #4CAF4F;">Terms of Service</a> and <a href="#" style="color: #4CAF4F;">Privacy Policy</a></label>
+                </div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <div class="social-login">
+                <button class="social-btn" onclick="alert('Google signup')">Google</button>
+                <button class="social-btn" onclick="alert('Facebook signup')">Facebook</button>
+            </div>
+
+            <div class="auth-footer">
+                Already have an account? <a href="#" onclick="switchTab('login')">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="icon/logo2.svg" alt="Nexcent Logo">
+                    <h3>Nexcent</h3>
+                </div>
+                <p class="copyright">Copyright © 2020 Landify UI Kit.<br>All rights reserved</p>
+                <div class="social-icons">
+                    <a href="#"><img src="icon/footer1.svg" alt="Instagram"></a>
+                    <a href="#"><img src="icon/footed2.svg" alt="Dribbble"></a>
+                    <a href="#"><img src="icon/footer3.svg" alt="Twitter"></a>
+                    <a href="#"><img src="icon/footer4.svg" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contact us</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="#">Help center</a>
+                    <a href="#">Terms of service</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Status</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Stay up to date</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="submit-btn">
+                            <img src="icon/send.svg" alt="Submit">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+
+            const tabs = document.querySelectorAll('.auth-tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            const tabButtons = document.querySelectorAll('.auth-tab');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            event.target.classList.add('active');
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const button = event.target;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.textContent = '👁️‍🗨️';
+            } else {
+                input.type = 'password';
+                button.textContent = '👁️';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            alert(`Login with:\nEmail: ${email}\nPassword: ${password}`);
+
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            alert(`Register with:\nName: ${name}\nEmail: ${email}\nPassword: ${password}`);
+
+        }
+    </script>
+</body>
+</html>
