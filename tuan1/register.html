@@ -49,7 +49,7 @@
                     <label for="login-password">Password</label>
                     <div class="password-toggle">
                         <input type="password" id="login-password" placeholder="Enter your password" required>
-                        <button type="button" onclick="togglePassword('login-password')">👁️</button>
+                        <button type="button"  onclick="togglePassword('login-password', this)">🐵</button>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                     <label for="register-password">Password</label>
                     <div class="password-toggle">
                         <input type="password" id="register-password" placeholder="Create a strong password" required>
-                        <button type="button" onclick="togglePassword('register-password')">👁️</button>
+                        <button type="button"  onclick="togglePassword('register-password', this)">🐵</button>
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                     <label for="register-confirm">Confirm Password</label>
                     <div class="password-toggle">
                         <input type="password" id="register-confirm" placeholder="Confirm your password" required>
-                        <button type="button" onclick="togglePassword('register-confirm')">👁️</button>
+                        <button type="button"  onclick="togglePassword('register-confirm', this)">🐵</button>
                     </div>
                 </div>
 
@@ -176,7 +176,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="api.js"></script>
     <script src="register.js"></script>
 </body>
 </html>

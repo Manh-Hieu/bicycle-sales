@@ -23,7 +23,7 @@
         <a href="#">Community</a>
         <a href="#">Blog</a>
         <a href="#">Pricing</a>
-        <a class="btn btn1" href="register.html">
+        <a class="btn btn1" href="register.html" id="nav-register-btn">
             Register Now
             <img class="arrow-right" src="icon/Right.svg" alt="Arrow Right"></a>
     </nav>
@@ -33,7 +33,7 @@
     <div class="hero-size">
         <h1>Lessons and insights<br><span>from 8 years</span></h1>
         <p>Where to grow your business as a photographer: site or social media?</p>
-        <a href="#" class="btn">Register</a>
+        <a href="#" class="btn" id="hero-register-btn" >Register</a>
     </div>
     <img class="hero-img" src="IMG/Illustration.svg" />
 </section>
@@ -250,6 +250,57 @@
             </div>
         </div>
     </footer>
+<script>
+    const navRegisterBtn = document.getElementById('nav-register-btn');
+    const heroRegisterBtn = document.getElementById('hero-register-btn');
 
+    function handleRegisterClick(event) {
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+
+        if (token && user) {
+            event.preventDefault();
+
+            const userData = JSON.parse(user);
+            const shouldLogout = confirm(
+                `Bạn đã đăng nhập với tài khoản ${userData.email}.\nBạn có muốn đăng xuất không?`
+            );
+
+            if (shouldLogout) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                alert('Đăng xuất thành công!');
+                window.location.href = 'register.html';
+            }
+        }
+    }
+
+    if (navRegisterBtn) {
+        navRegisterBtn.addEventListener('click', handleRegisterClick);
+    }
+              
+    if (heroRegisterBtn) {
+        heroRegisterBtn.addEventListener('click', handleRegisterClick);
+    }                                                                               
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+
+        if (token && user) {
+            const userData = JSON.parse(user);
+
+            if (navRegisterBtn) {
+                navRegisterBtn.childNodes[0].textContent = 'Logged In';
+                navRegisterBtn.title = `Đang đăng nhập: ${userData.email}`;
+            }
+
+            if (heroRegisterBtn) {
+                heroRegisterBtn.textContent = 'Account';
+                heroRegisterBtn.title = `Đang đăng nhập: ${userData.email}`;
+            }
+        }
+    });
+</script>
 </body>
 </html>
