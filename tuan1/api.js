@@ -95,6 +95,8 @@ function clearSession() {
     localStorage.removeItem(USER_KEY);
 }
 
+
+// trùng lặp tận 2 hàm register để làm gì ?
 async function register(fullName, email, password) {
     try {
         const normalizedEmail = email.trim().toLowerCase();
