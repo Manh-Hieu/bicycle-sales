@@ -11,10 +11,6 @@ function saveUsers(users) {
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
 
-function generateToken(user) {
-    return `local-${user.id}-${Date.now()}`;
-}
-
 function sanitizeUser(user) {
     return {
         id: user.id,
@@ -22,10 +18,59 @@ function sanitizeUser(user) {
         email: user.email
     };
 }
+async function register(fullName, email, password) {
+    try {
+        const normalizedEmail = email.trim().toLowerCase();
+        const users = getUsers();
+
+        const existingUser = users.find(
+            user => user.email.toLowerCase() === normalizedEmail
+        );
+
+        if (existingUser) {
+            return {
+                ok: false,
+                data: {
+                    message: 'Email đã tồn tại'
+                }
+            };
+        }
+
+        const newUser = {
+            id: Date.now(),
+            fullName: fullName.trim(),
+            email: normalizedEmail,
+            password: password,
+            createdAt: new Date().toISOString()
+        };
+
+        users.push(newUser);
+        saveUsers(users);
+
+        return {
+            ok: true,
+            data: {
+                message: 'Đăng ký thành công',
+                user: sanitizeUser(newUser)
+            }
+        };
+    } catch (error) {
+        return {
+            ok: false,
+            data: {
+                message: 'Không thể đăng ký'
+            }
+        };
+    }
+}
 
 function getStoredUser() {
     const user = localStorage.getItem(USER_KEY);
     return user ? JSON.parse(user) : null;
+}
+
+function generateToken(user) {
+    return `local-${user.id}-${Date.now()}`;
 }
 
 function getStoredToken() {
