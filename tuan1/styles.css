@@ -1,5 +1,7 @@
 /* =======================
    RESET & GLOBAL
+
+   sao dùng cả style.css và register.css ? đã thế Cả 2 file này đều chứa khối code * { margin: 0; padding: 0; box-sizing: border-box; }
 ======================= */
 * {
   margin: 0;
@@ -427,7 +429,9 @@ nav a {
   max-width: 168px;
 }
 
-.marketing-imgs_text1, .marketing-imgs_text2, .marketing-imgs_text3 {
+.marketing-imgs_text1,
+.marketing-imgs_text2,
+.marketing-imgs_text3 {
   left: 25px;
   top: 145px;
 }
